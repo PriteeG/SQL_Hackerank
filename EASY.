@@ -1,0 +1,98 @@
+1.Query all attributes of every Japanese city in the CITY table. The COUNTRYCODE for Japan is JPN.
+
+ANS= SELECT * FROM CITY WHERE COUNTRYCODE='JPN';
+
+2.Query all columns (attributes) for every row in the CITY table.
+Ans= Select * From CITY;
+
+3.Query all columns for all American cities in the CITY table with populations larger than 100000. The CountryCode for America is USA.
+ANS= Select * From CITY Where CountryCode ='USA' and Populations >100000;
+
+
+4.	Query all columns for a city in CITY with the ID 1661
+Ans = Select * from CITY Where  ID = 1661;
+
+5.Query a list of CITY and STATE from the STATION table.Where LAT_N is the northern latitude and LONG_W is the western longitude.          ## WEATHER OBSERVATION 1
+Ans= Select CITY ,STATE From Station;
+
+6.Query a list of CITY names from STATION for cities that have an even ID number. Print the results in any order, but exclude duplicates from the answer
+  The STATION table is described as follows,where LAT_N is the northern latitude and LONG_W is the western longitude.                         ##WEATHER OBSERVATION 3
+
+Ans: SELECT DISTINCT CITY FROM STATION WHERE ID % 2 = 0;
+
+7.Find the difference between the total number of CITY entries in the table and the number of distinct CITY entries in the table.         ###WEATHER OBSERVATION 4
+  The STATION table is described as following.where LAT_N is the northern latitude and LONG_W is the western longitude.
+
+For example, if there are three records in the table with CITY values 'New York', 'New York', 'Bengalaru',
+there are 2 different city names: 'New York' and 'Bengalaru'. The query returns , because
+total number of records-number of uniue city name=3-2=1
+
+ANS= Select count(city) - count(distinct city) From station;
+
+8.Query the list of CITY names starting with vowels (i.e., a, e, i, o, or u) from STATION. Your result cannot contain duplicates.      ##WEATHER OBSERVATION 6
+where LAT_N is the northern latitude and LONG_W is the western longitude.
+
+Ans = SELECT DISTINCT CITY FROM STATION WHERE CITY LIKE 'a%' 
+OR CITY LIKE 'e%'
+OR CITY LIKE 'i%'
+OR CITY LIKE 'o%'
+OR CITY LIKE 'u%';
+
+
+9.Query the list of CITY names ending with vowels (a, e, i, o, u) from STATION. Your result cannot contain duplicates.      ##WEATHER OBSERVATION 7
+Ans: SELECT DISTINCT CITY FROM STATION WHERE CITY LIKE '%a'
+OR CITY LIKE '%e'
+OR CITY LIKE '%i'
+OR CITY LIKE '%o'
+OR CITY LIKE '%u';
+
+10.Query the list of CITY names from STATION which have vowels (i.e., a, e, i, o, and u) as both their first and last characters. Your result cannot contain duplicates.
+Ans= SELECT DISTINCT CITY FROM STATION  WHERE City LIKE '[A,E,I,O,U]%[A,E,I,O,U]';      ##WEATHER OBSERVATION 8
+
+11.Query the list of CITY names from STATION that do not start with vowels. Your result cannot contain duplicates.  ##WEATHER OBSERVATION 9
+
+Ans= SELECT DISTINCT CITY FROM STATION  WHERE City NOT LIKE 'a%'
+AND City NOT LIKE 'e%'
+AND City NOT LIKE 'i%'
+AND City NOT LIKE 'o%'
+AND City NOT LIKE 'u%';
+
+12.Query the list of CITY names from STATION that do not end with vowels. Your result cannot contain duplicates.    ##WEATHER OBSERVATION 10
+
+Ans=Select DISTINCT CITY from STATION where CITY NOT LIKE '%[a,e,i,o,u]';
+
+13.Query the list of CITY names from STATION that either do not start with vowels or do not end with vowels. Your result cannot contain duplicates.  ##WEATHER OBSERVATION 11
+
+Ans=SELECT DISTINCT CITY FROM STATION WHERE CITY NOT LIKE '[aeiouAEIOU]%' OR CITY NOT LIKE '%[aeiouAEIOU]';
+
+13.Query the list of CITY names from STATION that do not start with vowels and do not end with vowels. Your result cannot contain duplicates.  ##WEATHER OBSERVATION 12.
+
+Ans= SELECT DISTINCT city FROM station WHERE city NOT LIKE '[AEIOU]%' AND city NOT LIKE '%[aeiou]';
+
+16.Query the Name of any student in STUDENTS who scored higher than  Marks. Order your output by the last three characters of each name.    ## Heigher than 75 Mark
+If two or more students both have names ending in the same last three characters (i.e.: Bobby, Robby, etc.), secondary sort them by ascending ID.
+Sample Output
+
+Ashley
+Julia
+Belvet
+Explanation
+
+Only Ashley, Julia, and Belvet have Marks > . If you look at the last three characters of each of their names, there are no duplicates and 'ley' < 'lia' < 'vet
+
+Ans= SELECT Name FROM STUDENTS WHERE Marks > 75 ORDER BY SUBSTRING(Name, LEN(Name) - 2, 3) ASC, ID ASC;
+
+17.Write a query that prints a list of employee names (i.e.: the name attribute) from the Employee table in alphabetical order.  ##Employee Name 
+   where employee_id is an employee's ID number, name is their name, months is the total number of months they've been working for the company, and salary is their monthly salary.
+
+
+Ans =SELECT NAME FROM EMPLOYEE ORDER BY NAME ASC;
+
+18.Write a query that prints a list of employee names (i.e.: the name attribute) for employees in Employee having a salary greater than $2000 per month
+who have been employees for less than 10 months. Sort your result by ascending employee_id.
+
+Ans=SELECT NAME FROM EMPLOYEE WHERE SALARY >2000 AND MONTHS <10  ORDER BY EMPLOYEE_ID ASC;  ## EMPOYEE sALARY
+
+
+
+ 
